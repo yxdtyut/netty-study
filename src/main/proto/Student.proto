@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package com.yxdtyut.grpc;
+
+option java_package = "com.yxdtyut.grpc";
+option java_outer_classname = "StudentProto3";
+option java_multiple_files = true;
+
+service StudentService {
+    rpc getRealnameBuUsername (MyRequest) returns (MyResponse){}
+}
+
+message MyRequest {
+    string username = 1;
+}
+
+message MyResponse {
+    string realname = 1;
+}

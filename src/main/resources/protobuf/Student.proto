@@ -1,0 +1,40 @@
+syntax="proto2";
+
+package com.yxdtyut.protobuf;
+
+option optimize_for = SPEED;
+option java_package = "com.yxdtyut.protobufexample";
+option java_outer_classname = "Person";
+
+message OutMessage{
+    enum PersonType{
+        StudentType = 1;
+        TeacherType = 2;
+        DoctorType = 3;
+    }
+
+    required PersonType type = 1;
+
+    oneof dataBody {
+        Student student = 2;
+        Teacher teacher = 3;
+        Doctor doctor = 4;
+    }
+}
+
+message Student {
+    required string name = 1;
+    optional int32 age = 2;
+    optional string address = 3;
+}
+
+message Teacher {
+    required string name = 1;
+    optional int32 age = 2;
+}
+
+message Doctor {
+    required string name = 1;
+    optional int32 age = 2;
+    optional string sex = 3;
+}
