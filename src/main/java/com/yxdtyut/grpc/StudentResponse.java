@@ -362,7 +362,7 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:com.yxdtyut.grpc.StudentResponse)
-      com.yxdtyut.grpc.StudentResponseOrBuilder {
+      StudentResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return StudentProto3.internal_static_com_yxdtyut_grpc_StudentResponse_descriptor;

@@ -3,6 +3,8 @@ package com.yxdtyut.grpc.impl;
 import com.yxdtyut.grpc.*;
 import io.grpc.stub.StreamObserver;
 
+import java.time.LocalDateTime;
+
 /**
  * @program: netty_study
  * @description: 基于studentService grpc接口的实现类
@@ -25,5 +27,50 @@ public class StudentServiceImpl extends StudentServiceGrpc.StudentServiceImplBas
         responseObserver.onNext(StudentResponse.newBuilder().setName("王五").setAge(22).setCity("广州").build());
         responseObserver.onNext(StudentResponse.newBuilder().setName("赵六").setAge(23).setCity("深圳").build());
         responseObserver.onCompleted();
+    }
+
+    @Override
+    public StreamObserver<StudentRequest> getStudentListByAges(StreamObserver<StudentResponseList> responseObserver) {
+        return new StreamObserver<StudentRequest>() {
+            @Override
+            public void onNext(StudentRequest value) {
+                System.out.println("getStudentListByAges receive message: " + value.getAge());
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                System.out.println(t.getMessage());
+            }
+
+            @Override
+            public void onCompleted() {
+                StudentResponse s1 = StudentResponse.newBuilder().setName("lucky").setAge(2).setCity("西安").build();
+                StudentResponse s2 = StudentResponse.newBuilder().setName("happy").setAge(1).setCity("广州").build();
+                StudentResponseList list = StudentResponseList.newBuilder().addResponse(s1).addResponse(s2).build();
+                responseObserver.onNext(list);
+                responseObserver.onCompleted();
+            }
+        };
+    }
+
+    @Override
+    public StreamObserver<StreamRequest> biTalk(StreamObserver<StreamResponse> responseObserver) {
+        return new StreamObserver<StreamRequest>() {
+            @Override
+            public void onNext(StreamRequest value) {
+                System.out.println("biTalk receive message:" + value.getRequestInfo());
+                responseObserver.onNext(StreamResponse.newBuilder().setResponseInfo(LocalDateTime.now().toString()).build());
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                System.out.println(t.getMessage());
+            }
+
+            @Override
+            public void onCompleted() {
+                responseObserver.onCompleted();
+            }
+        };
     }
 }
