@@ -11,7 +11,7 @@ public interface MyResponseOrBuilder extends
    * <code>string realname = 1;</code>
    * @return The realname.
    */
-  java.lang.String getRealname();
+  String getRealname();
   /**
    * <code>string realname = 1;</code>
    * @return The bytes for realname.

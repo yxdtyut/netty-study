@@ -1,11 +1,10 @@
 package com.yxdtyut.grpc.impl;
 
-import com.yxdtyut.grpc.MyRequest;
-import com.yxdtyut.grpc.MyResponse;
-import com.yxdtyut.grpc.StudentServiceGrpc;
+import com.yxdtyut.grpc.*;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
+import java.util.Iterator;
 import java.util.logging.Logger;
 
 /**
@@ -23,6 +22,14 @@ public class GrpcClient {
         final StudentServiceGrpc.StudentServiceBlockingStub stub = StudentServiceGrpc.newBlockingStub(channel);
         final MyResponse response = stub.getRealnameBuUsername(MyRequest.newBuilder().setUsername("libai").build());
         logger.info("response: " + response.getRealname());
-
+        System.out.println("-------------------");
+        final Iterator<StudentResponse> studentByAge = stub.getStudentByAge(StudentRequest.newBuilder().setAge(26).build());
+        while (studentByAge.hasNext()) {
+            final StudentResponse studentResponse = studentByAge.next();
+            System.out.printf(studentResponse.getName() + "-");
+            System.out.printf(studentResponse.getAge() + "-");
+            System.out.printf(studentResponse.getCity());
+            System.out.println();
+        }
     }
 }
