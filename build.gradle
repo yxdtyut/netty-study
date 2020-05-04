@@ -27,6 +27,7 @@ dependencies {
 }
 
 protobuf {
+    generatedFilesBaseDir = "src"
     protoc {
         artifact = "com.google.protobuf:protoc:3.11.0"
     }
@@ -37,7 +38,9 @@ protobuf {
     }
     generateProtoTasks {
         all()*.plugins {
-            grpc {}
+            grpc {
+                outputSubDir = "java"
+            }
         }
     }
 }

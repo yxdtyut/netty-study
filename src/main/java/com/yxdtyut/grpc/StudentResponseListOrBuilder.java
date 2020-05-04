@@ -10,12 +10,12 @@ public interface StudentResponseListOrBuilder extends
   /**
    * <code>repeated .com.yxdtyut.grpc.StudentResponse response = 1;</code>
    */
-  java.util.List<StudentResponse>
+  java.util.List<com.yxdtyut.grpc.StudentResponse> 
       getResponseList();
   /**
    * <code>repeated .com.yxdtyut.grpc.StudentResponse response = 1;</code>
    */
-  StudentResponse getResponse(int index);
+  com.yxdtyut.grpc.StudentResponse getResponse(int index);
   /**
    * <code>repeated .com.yxdtyut.grpc.StudentResponse response = 1;</code>
    */
@@ -23,11 +23,11 @@ public interface StudentResponseListOrBuilder extends
   /**
    * <code>repeated .com.yxdtyut.grpc.StudentResponse response = 1;</code>
    */
-  java.util.List<? extends StudentResponseOrBuilder>
+  java.util.List<? extends com.yxdtyut.grpc.StudentResponseOrBuilder> 
       getResponseOrBuilderList();
   /**
    * <code>repeated .com.yxdtyut.grpc.StudentResponse response = 1;</code>
    */
-  StudentResponseOrBuilder getResponseOrBuilder(
-          int index);
+  com.yxdtyut.grpc.StudentResponseOrBuilder getResponseOrBuilder(
+      int index);
 }
